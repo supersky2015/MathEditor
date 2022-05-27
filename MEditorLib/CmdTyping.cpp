@@ -97,8 +97,10 @@ void CCmdTyping::UnExecute()
 
 CBox* CCmdTyping::MakeBox()
 {
+	CString strTemp;
+	strTemp.Format(_T("%c"),m_Char);
 	if (m_Char>='0' && m_Char<='9')
-		return new CMN(m_Char);
+		return new CMN(strTemp);
 
 	switch (m_Char){
 	case '+':
@@ -106,12 +108,17 @@ CBox* CCmdTyping::MakeBox()
 	case '*':
 	case '<':
 	case '>':
-		return new CMO(m_Char);
+		{
+			CString strTemp;
+			strTemp.Format(_T("%c"),m_Char);
+			return new CMO(strTemp);
+		}
+		
 		break;
 	}
 
 	if (m_Char>=32)
-		return new CMI(m_Char);
+		return new CMI(strTemp);
 	else
 		return NULL;
 }

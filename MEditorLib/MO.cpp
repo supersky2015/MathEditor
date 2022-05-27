@@ -30,21 +30,26 @@ CMO::CMO(CString st, CString MathML, CString LaTeX, CString form)
 	m_strForm=form;
 
 	if (st=="+")
-		SetData(0x21);
+		//SetData(0x21);
+		SetData(st);
 	else if (st=="-"){
-		SetData(0x23);
+		//SetData(0x23);
+		SetData(st);
 		if (MathML=="")
 			m_strMathML="&minus;";
 	}
 	else if (st=="*"){
-		SetData(0x25);
+		//SetData(0x25);
+		SetData(st);
 		if (MathML=="")
 			m_strMathML="&times;";
 	}
 	else if (st=="=")
-		SetData(0x22);
+		//SetData(0x22);
+		SetData(st);
 	else if (st=="<"){
-		SetData(0x5E);
+		//SetData(0x5E);
+		SetData(st);
 		m_FontName="Lucida Bright Math Italic";
 	}
 	else if (st=="<="){
@@ -52,11 +57,13 @@ CMO::CMO(CString st, CString MathML, CString LaTeX, CString form)
 		m_FontName="Lucida Bright Math Italic";
 	}
 	else if (st==">"){
-		SetData((char)0x60);
+		//SetData((char)0x60);
+		SetData(st);
 		m_FontName="Lucida Bright Math Italic";
 	}
 	else if (st==">="){
-		SetData((char)0xD5);
+		//SetData((char)0xD5);
+		SetData(st);
 		m_FontName="Lucida Bright Math Italic";
 	}
 	else{

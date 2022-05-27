@@ -26,3 +26,5 @@
 // Microsoft Visual C++ will insert additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_STDAFX_H__917B92F5_99F9_47F2_93A4_E8B4F440829B__INCLUDED_)
+
+#pragma comment(lib,"MEditorLib.lib")

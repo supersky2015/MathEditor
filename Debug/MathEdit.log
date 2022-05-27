@@ -1,0 +1,37 @@
+﻿生成启动时间为 2022/5/11 16:15:12。
+     1>项目“E:\GWorkspace\MathEditor\MathEdit.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“.\Debug\MathEdit.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         所有输出均为最新。
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug\MathEdit.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:".\Debug\MathEdit.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\GWorkspace\MathEditor\Debug\MathEdit.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Debug\MathEdit.lib" /MACHINE:X86 .\Debug\MathEdit.res
+         .\Debug\MathEdit.exe.embed.manifest.res
+         .\Debug\About.obj
+         .\Debug\EditorDlg.obj
+         .\Debug\MathEdit.obj
+         .\Debug\StdAfx.obj
+         .\Debug\ToolBarBtn.obj
+         .\Debug\ToolBarBtnCtrl.obj
+         .\Debug\ToolBarDlg.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:".\Debug\MathEdit.exe.embed.manifest" /manifest .\Debug\MathEdit.exe.intermediate.manifest "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         MathEdit.vcxproj -> E:\GWorkspace\MathEditor\.\Debug\MathEdit.exe
+       BscMake:
+         所有输出均为最新。
+       FinalizeBuildStatus:
+         正在删除文件“.\Debug\MathEdit.unsuccessfulbuild”。
+         正在对“.\Debug\MathEdit.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\GWorkspace\MathEditor\MathEdit.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.54

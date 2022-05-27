@@ -58,7 +58,7 @@ void CMTable::Layout(CDC *pDC)
 	TEXTMETRIC tm;
 	if (m_RowSpace==-1){//Set row spacing to default value
 		ZeroMemory(&lf, sizeof(lf));
-		strcpy(lf.lfFaceName,"Times New Roman");
+		_tcscpy_s(lf.lfFaceName,_T("Times New Roman"));
 		lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 		newFont.CreateFontIndirect(&lf);
 		pOldFont=pDC->SelectObject(&newFont);
@@ -79,7 +79,7 @@ void CMTable::Layout(CDC *pDC)
 		}
 	}
 
-	strcpy(lf.lfFaceName,"Lucida Bright Math Symbol");
+	_tcscpy_s(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
 	lf.lfCharSet=SYMBOL_CHARSET;
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	newFont.CreateFontIndirect(&lf);

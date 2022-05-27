@@ -85,7 +85,7 @@ void CMRoot::Layout(CDC *pDC)
 	m_rh=(h1+g+k)/3;//Height of radical sign
 
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,"Times New Roman");
+	_tcscpy_s(lf.lfFaceName,_T("Times New Roman"));
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 
 	CFont newFont;

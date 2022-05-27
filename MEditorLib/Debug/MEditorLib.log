@@ -1,0 +1,49 @@
+﻿生成启动时间为 2022/5/11 16:15:12。
+     1>项目“E:\GWorkspace\MathEditor\MEditorLib\MEditorLib.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“.\Debug\MEditorLib.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /Gy- /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp".\Debug\MEditorLib.pch" /Fo".\Debug\\" /Fd".\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Text.cpp
+         Text.cpp
+     1>e:\gworkspace\matheditor\meditorlib\text.cpp(78): warning C4101: “pOldFont”: 未引用的局部变量
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:".\Debug\MEditorLib.lib" /NOLOGO .\Debug\Box.obj
+         .\Debug\BoxHolder.obj
+         .\Debug\CmdDelete.obj
+         .\Debug\CmdDelSel.obj
+         .\Debug\CmdInsert.obj
+         .\Debug\CmdTyping.obj
+         .\Debug\Command.obj
+         .\Debug\CompositeBox.obj
+         .\Debug\Cursor.obj
+         .\Debug\EditorCtrl.obj
+         .\Debug\Factory.obj
+         .\Debug\MacroCommand.obj
+         .\Debug\MBrace.obj
+         .\Debug\MEntity.obj
+         .\Debug\MFrac.obj
+         .\Debug\MI.obj
+         .\Debug\MN.obj
+         .\Debug\MO.obj
+         .\Debug\MRoot.obj
+         .\Debug\MRow.obj
+         .\Debug\MSubSup.obj
+         .\Debug\MSymbol.obj
+         .\Debug\MTable.obj
+         .\Debug\MUnderOver.obj
+         .\Debug\Over.obj
+         .\Debug\Parser.obj
+         .\Debug\ParserException.obj
+         .\Debug\ParserMathText.obj
+         .\Debug\StdAfx.obj
+         .\Debug\Text.obj
+         MEditorLib.vcxproj -> E:\GWorkspace\MathEditor\MEditorLib\.\Debug\MEditorLib.lib
+       FinalizeBuildStatus:
+         正在删除文件“.\Debug\MEditorLib.unsuccessfulbuild”。
+         正在对“.\Debug\MEditorLib.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\GWorkspace\MathEditor\MEditorLib\MEditorLib.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.29

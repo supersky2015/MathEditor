@@ -41,7 +41,7 @@ Initialize array of original operator such as !,@,#...
 CEditorCtrl::CEditorCtrl()
 {
 	RegisterWindowClass();
-	CF_MATHEQU=RegisterClipboardFormat("CF_MathEquation");
+	CF_MATHEQU=RegisterClipboardFormat(_T("CF_MathEquation"));
 	_ASSERT(CF_MATHEQU!=0);
 	m_nLeftMargin=0;
 	m_nTopMargin=0;
@@ -633,12 +633,15 @@ void CEditorCtrl::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	// TODO: Add your message handler code here and/or call default
 	if (nChar!=8 && !m_bCanAdd){
-		AfxMessageBox("The mathematical formula's dimentions have excessed the limitation\nPlease remove at least an item");
+		AfxMessageBox(_T("The mathematical formula's dimentions have excessed the limitation\nPlease remove at least an item"));
 		return;
 	}
 	CBox* box=NULL;
+	CString strTemp;
+	char nCharchar = nChar;
+	strTemp.Format(_T("%c"),nCharchar);
 	if (nChar>='0' && nChar<='9')
-		box=new CMN(nChar);
+		box=new CMN(strTemp);
 	else if (nChar=='+')
 		box=new CMO('+');
 	else if (nChar=='-')
@@ -652,14 +655,19 @@ void CEditorCtrl::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 	else if (nChar=='>')
 		box=new CMO('>');
 	else if (nChar==32 || (nChar>='a' && nChar<='z') || (nChar>='A' && nChar<='Z'))
-		box=new CMI(nChar);
+		box=new CMI(strTemp);
 	else{
-		int k=FindOriginalChar(nChar);
+		int k=FindOriginalChar(strTemp);
 		if (k>=0)
 			if (origins[k].bOperator)
-				box=new CMO(nChar, origins[k].strMathML, origins[k].strLaTeX);
+			{
+				CString strTemp;
+				char ncharchar = nChar;
+				strTemp.Format(_T("%c"),ncharchar);
+				box=new CMO(strTemp, origins[k].strMathML, origins[k].strLaTeX);
+			}
 			else
-				box=new CMI(nChar);
+				box=new CMI(strTemp);
 	}
 	if (box){
 		DeleteSelection();
@@ -684,7 +692,7 @@ BOOL CEditorCtrl::PreTranslateMessage(MSG* pMsg)
 		switch ((int)pMsg->wParam)
 		{
 			case	VK_TAB:
-			case	VK_RETURN:
+			//case	VK_RETURN:
 			case	VK_ESCAPE:
 				return FALSE;
 		}

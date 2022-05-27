@@ -153,7 +153,7 @@ void CCompositeBox::Serialize(CArchive &ar)
 			ar >> st;
 			box=CFactory::instance(st);
 			if (box==NULL)
-				AfxThrowArchiveException(CArchiveException::generic,"");
+				AfxThrowArchiveException(CArchiveException::generic,_T(""));
 			box->Serialize(ar);
 			AddBox(box);
 		}

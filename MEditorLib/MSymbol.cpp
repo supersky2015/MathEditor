@@ -112,7 +112,7 @@ void CMSymbol::Layout(CDC *pDC)
 	}
 	
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,"Lucida Bright Math Symbol");
+	_tcscpy_s(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
 	lf.lfHeight=-MulDiv(GetFontSize()*2, pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	lf.lfCharSet=SYMBOL_CHARSET;
 	lf.lfWeight=800;
@@ -190,7 +190,7 @@ void CMSymbol::Draw(CDC *pDC)
 	}
 
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,"Lucida Bright Math Symbol");
+	_tcscpy_s(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
 	lf.lfHeight=-MulDiv(GetFontSize()*2, pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	lf.lfCharSet=SYMBOL_CHARSET;
 	lf.lfWeight=800;

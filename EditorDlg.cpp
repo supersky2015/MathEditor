@@ -104,23 +104,23 @@ BOOL CEditorDlg::OnInitDialog()
 	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_UNDO), "Undo");
 	//m_tooltip.AddTool(GetDlgItem(IDC_BUTTON_REDO), "Redo");
 
-	m_tooltip.AddTool(GetDlgItem(IDC_EQUATION),		"Special Operators");
-	m_tooltip.AddTool(GetDlgItem(IDC_BRACE),		"Braces");
-	m_tooltip.AddTool(GetDlgItem(IDC_UPPER_GREEK),	"Upper Greek");
-	m_tooltip.AddTool(GetDlgItem(IDC_LOWER_GREEK),	"Lower Greek");
-	m_tooltip.AddTool(GetDlgItem(IDC_SUM),			"Sums, Producs, Unions, Intersections");
-	m_tooltip.AddTool(GetDlgItem(IDC_PROD),			"Dot symbols");
-	m_tooltip.AddTool(GetDlgItem(IDC_INTEGRAL),		"Integrals");
-	m_tooltip.AddTool(GetDlgItem(IDC_DERIVATIVE),	"More symbols");
-	m_tooltip.AddTool(GetDlgItem(IDC_MATRIX),		"Matrices");
-	m_tooltip.AddTool(GetDlgItem(IDC_PBYQ),			"Common equations");
-	m_tooltip.AddTool(GetDlgItem(IDC_FUNCTION),		"Functions");
-	m_tooltip.AddTool(GetDlgItem(IDC_COREDATA),		"Special Chars");
-	m_tooltip.AddTool(GetDlgItem(IDC_VECTOR),		"Vector, Over, Angle, Arc");
-	m_tooltip.AddTool(GetDlgItem(IDC_ARROWS),		"Arrows");
+	m_tooltip.AddTool(GetDlgItem(IDC_EQUATION),	_T("Special Operators"));
+	m_tooltip.AddTool(GetDlgItem(IDC_BRACE),		_T("Braces"));
+	m_tooltip.AddTool(GetDlgItem(IDC_UPPER_GREEK),	_T("Upper Greek"));
+	m_tooltip.AddTool(GetDlgItem(IDC_LOWER_GREEK),	_T("Lower Greek"));
+	m_tooltip.AddTool(GetDlgItem(IDC_SUM),			_T("Sums, Producs, Unions, Intersections"));
+	m_tooltip.AddTool(GetDlgItem(IDC_PROD),			_T("Dot symbols"));
+	m_tooltip.AddTool(GetDlgItem(IDC_INTEGRAL),		_T("Integrals"));
+	m_tooltip.AddTool(GetDlgItem(IDC_DERIVATIVE),	_T("More symbols"));
+	m_tooltip.AddTool(GetDlgItem(IDC_MATRIX),		_T("Matrices"));
+	m_tooltip.AddTool(GetDlgItem(IDC_PBYQ),			_T("Common equations"));
+	m_tooltip.AddTool(GetDlgItem(IDC_FUNCTION),		_T("Functions"));
+	m_tooltip.AddTool(GetDlgItem(IDC_COREDATA),		_T("Special Chars"));
+	m_tooltip.AddTool(GetDlgItem(IDC_VECTOR),		_T("Vector, Over, Angle, Arc"));
+	m_tooltip.AddTool(GetDlgItem(IDC_ARROWS),		_T("Arrows"));
 	CString st;
 	for (int i=8; i<=72; i++){
-		st.Format("%d",i);
+		st.Format(_T("%d"),i);
 		m_FontSizeList.AddString(st);
 	}
 	m_FontSizeList.SetCurSel(4);
@@ -129,7 +129,7 @@ BOOL CEditorDlg::OnInitDialog()
 	m_Editor.Invalidate(TRUE);
 
 	CEdit* pEdit=(CEdit*)GetDlgItem(IDC_FORMULA_TEXT);
-	pEdit->SetWindowText("x_12=(-b+-sqrt(b^2-4ac))/2a");
+	pEdit->SetWindowText(_T("x_12=(-b+-sqrt(b^2-4ac))/2a"));
 
 	CButton* pButton=(CButton*)GetDlgItem(IDC_COPY_MATHML);
 	pButton->SetCheck(TRUE);
@@ -392,8 +392,9 @@ void CEditorDlg::InitEntityList()
 	CStdioFile file;
 	tokens.SetSize(7);
 	if (!file.Open(st,CFile::modeRead)){
-		AfxMessageBox("Could not open entity list file");
-		CDialog::OnCancel();
+		AfxMessageBox(_T("Could not open entity list file"));
+		//CDialog::OnCancel();
+		return;
 	}
 	while (true){
 		if (!file.ReadString(st))
@@ -415,7 +416,7 @@ void CEditorDlg::InitEntityList()
 			//TRACE(st.Mid(i,k-i-1)+"\n");
 			i=k;
 		}
-		m_Editor.AddMathEntity(tokens[0], tokens[2], tokens[4], tokens[5], (BOOL)atoi(tokens[6]), (BOOL)atoi(tokens[1]), HexToInt(tokens[3]));
+		m_Editor.AddMathEntity(tokens[0], tokens[2], tokens[4], tokens[5], (BOOL)_ttoi(tokens[6]), (BOOL)_ttoi(tokens[1]), HexToInt(tokens[3]));
 	}
 }
 
@@ -602,9 +603,9 @@ void CEditorDlg::OnPaint()
 void CEditorDlg::OnSaveFile() 
 {
 	// TODO: Add your control notification handler code here
-	static char BASED_CODE szFilter[] = "Math equation files (*.meq)|*.meq|MathML files (*.mml)|*.mml|Windows metafile (*.wmf)|*.wmf|";
+	static TCHAR BASED_CODE szFilter[] = _T("Math equation files (*.meq)|*.meq|MathML files (*.mml)|*.mml|Windows metafile (*.wmf)|*.wmf|");
 	
-	CFileDialog fdlg( FALSE, "meq", "", OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT , szFilter, NULL );
+	CFileDialog fdlg( FALSE, _T("meq"), _T(""), OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT , szFilter, NULL );
 				
 	if (fdlg.DoModal() == IDOK)
 	{
@@ -628,9 +629,9 @@ void CEditorDlg::OnSaveFile()
 void CEditorDlg::OnOpenFile() 
 {
 	// TODO: Add your control notification handler code here
-	static char BASED_CODE szFilter[] = "Math equation files (*.meq)|*.meq|";
+	static TCHAR BASED_CODE szFilter[] = _T("Math equation files (*.meq)|*.meq|");
 	
-	CFileDialog fdlg( TRUE, "meq", "", OFN_HIDEREADONLY | OFN_FILEMUSTEXIST , szFilter, NULL );
+	CFileDialog fdlg( TRUE, _T("meq"), _T(""), OFN_HIDEREADONLY | OFN_FILEMUSTEXIST , szFilter, NULL );
 				
 	if (fdlg.DoModal() == IDOK)
 	{

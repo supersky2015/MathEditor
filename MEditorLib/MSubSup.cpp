@@ -59,7 +59,7 @@ void CMSubSup::Layout(CDC *pDC)
 	LOGFONT lf;
 	TEXTMETRIC tm;
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,"Times New Roman");
+	_tcscpy_s(lf.lfFaceName,_T("Times New Roman"));
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	CFont newFont;
 	newFont.CreateFontIndirect(&lf);

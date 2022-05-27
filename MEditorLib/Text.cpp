@@ -46,7 +46,9 @@ void CText::Layout(CDC *pDC)
 	CFont *pNewFont;
 	CString st;
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,m_FontName);
+	//strcpy(lf.lfFaceName,m_FontName);
+	//wcscpy_s(lf.lfFaceName,m_FontName);
+	_tcscpy_s(lf.lfFaceName,m_FontName);
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	lf.lfCharSet=m_CharSet;
 	lf.lfItalic=m_nItalic;
@@ -80,13 +82,13 @@ void CText::Draw(CDC *pDC)
 	CPen *pOldPen;
 	CPen *pNewPen;
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,m_FontName);
+	_tcscpy_s(lf.lfFaceName,m_FontName);
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 	lf.lfCharSet=m_CharSet;
 	lf.lfItalic=m_nItalic;
 	pNewFont=new CFont();
 	pNewFont->CreateFontIndirect(&lf);
-	pOldFont=pDC->SelectObject(pNewFont);
+	//pOldFont=pDC->SelectObject(pNewFont);
 	
 	x1=GetLeft();
 	y1=GetTop();
@@ -122,23 +124,26 @@ void CText::Draw(CDC *pDC)
 		pNewPen=NULL;
 	}
 	
-	pDC->SelectObject(pOldFont);
+//	pDC->SelectObject(pOldFont);
 	pNewFont->DeleteObject();
 	delete pNewFont;
 	pNewFont=NULL;
 
 	if (m_bInverted && !IsTemplate()){
 		CSize sz;
-		strcpy(lf.lfFaceName,"Lucida Bright Math Symbol");		
+		_tcscpy_s(lf.lfFaceName,_T("Lucida Bright Math Symbol"));
 		lf.lfItalic=FALSE;
 		pNewFont=new CFont();
 		pNewFont->CreateFontIndirect(&lf);
-		pOldFont=pDC->SelectObject(pNewFont);
-		sz=pDC->GetTextExtent(0x59);
+		//pOldFont=pDC->SelectObject(pNewFont);
+		char nTemp = 0x59;
+		CString strTemp;
+		strTemp.Format(_T("%c"),nTemp);
+		sz=pDC->GetTextExtent(strTemp);
 		x1=GetLeft();
 		x1+=(GetWidth()-sz.cx)/2;
-		pDC->TextOut(x1,y1,0x59);
-		pDC->SelectObject(pOldFont);
+		pDC->TextOut(x1,y1,strTemp);
+		//pDC->SelectObject(pOldFont);
 		pNewFont->DeleteObject();
 		delete pNewFont;
 		pNewFont=NULL;

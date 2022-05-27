@@ -198,26 +198,36 @@ void CMBrace::Layout(CDC *pDC)
 	CSize sz2;
 	int h, w;
 	ZeroMemory(&lf, sizeof(lf));
-	strcpy(lf.lfFaceName,"Lucida Math Bright Extension");
+	_tcscpy_s(lf.lfFaceName,_T("Lucida Math Bright Extension"));
 	lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72);
 	lf.lfCharSet=SYMBOL_CHARSET;
 	newFont.CreateFontIndirect(&lf);
 	CFont* pOldFont=pDC->SelectObject(&newFont);
+	CString strTemp;
 	if (m_BraceChar1>0)
-		sz1=pDC->GetTextExtent(m_BraceChar1);
+	{
+		strTemp.Format(_T("%c"),m_BraceChar1);
+		sz1=pDC->GetTextExtent(strTemp);
+	}
 	else
 		sz1=pDC->GetTextExtent("X");
 	pDC->SelectObject(pOldFont);
 	newFont.DeleteObject();
 
-	strcpy(lf.lfFaceName,"Times New Roman");
+	_tcscpy_s(lf.lfFaceName,_T("Times New Roman"));
 	lf.lfCharSet=DEFAULT_CHARSET;
 	newFont.CreateFontIndirect(&lf);
 	pOldFont=pDC->SelectObject(&newFont);
 	if (m_BraceReplace1>0)
-		sz2=pDC->GetTextExtent(m_BraceReplace1);
+	{
+		strTemp.Format(_T("%c"),m_BraceReplace1);
+		sz2=pDC->GetTextExtent(strTemp);
+	}
 	else
-		sz2=pDC->GetTextExtent(m_BraceReplace2);
+	{
+		strTemp.Format(_T("%c"),m_BraceReplace2);
+		sz2=pDC->GetTextExtent(strTemp);
+	}
 	pDC->SelectObject(pOldFont);
 	newFont.DeleteObject();
 
@@ -271,18 +281,30 @@ void CMBrace::Draw(CDC *pDC)
 	x=GetLeft();
 	y=GetTop();
 	if (m_bUseReplace){
-		strcpy(lf.lfFaceName,"Times New Roman");
+		_tcscpy_s(lf.lfFaceName,_T("Times New Roman"));
 		lf.lfHeight=-MulDiv(GetFontSize(), pDC->GetDeviceCaps(LOGPIXELSY), 72); 
 		newFont.CreateFontIndirect(&lf);
 		pOldFont=pDC->SelectObject(&newFont);
 		ocl=pDC->SetTextColor(cl);
 		if (m_nType<=7)
-			pDC->TextOut(x,y,m_BraceReplace1);
+		{
+			CString strTemp;
+			strTemp.Format(_T("%c"),m_BraceReplace1);
+			pDC->TextOut(x,y,strTemp);
+		}
 		if (m_nType<4)
-			pDC->TextOut(x+m_BraceWidth+GetBox(0)->GetWidth(),y,m_BraceReplace2);
+		{
+			CString strTemp;
+			strTemp.Format(_T("%c"),m_BraceReplace2);
+			pDC->TextOut(x+m_BraceWidth+GetBox(0)->GetWidth(),y,strTemp);
+		}
 		else
 			if (m_nType>7)
-				pDC->TextOut(x+GetBox(0)->GetWidth(),y,m_BraceReplace2);
+			{
+				CString strTemp;
+				strTemp.Format(_T("%c"),m_BraceReplace2);
+				pDC->TextOut(x+GetBox(0)->GetWidth(),y,strTemp);
+			}
 		pDC->SelectObject(pOldFont);
 		newFont.DeleteObject();
 		pDC->SetTextColor(ocl);
